@@ -1,0 +1,13 @@
+h2{
+    color: rgb(255, 46, 161);
+}
+h1{
+    color: rgb(65, 131, 255);
+}
+.Encabezado{
+    background-color: rgb(255, 215, 252);
+}
+.Logo{
+    width: 100px;       
+    height: auto;
+}
