@@ -5,9 +5,68 @@ h1{
     color: rgb(65, 131, 255);
 }
 .Encabezado{
-    background-color: rgb(255, 215, 252);
+    background-color: #b8136f;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
-.Logo{
-    width: 100px;       
-    height: auto;
+.logoDiv{
+    width: 25%;
+    background-color: #b8136f;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.logoDiv img{
+    width: 200px;
+}
+.menuDiv{
+    background-color: #b8136f;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.menuDiv ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #d6e6b7;
+    padding: 20px;
+    justify-content: center;
+    color: #a35481;
+}
+.menuDiv ul li a {
+    text-decoration: none;
+    color: #a35481;
+}
+.menuDiv ul li a:hover{
+    background-color: #f1ffd5;
+    padding: 20px;
+    border-radius: 15px;
+}
+.redesDiv{
+    width: 35%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+.redesDiv li{
+    list-style: none;
+}
+.redesDiv img{
+    width: 32px;
+}
+
+.redesDiv ul{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+}
+
+.redesDiv ul li a:hover{
+    transform: scale(1.05);
 }

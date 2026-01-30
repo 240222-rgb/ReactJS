@@ -1,0 +1,17 @@
+.ContenedorTargeta{
+    background-color: #f1ffd5;
+    width: 600%;
+    padding: 100px;
+    display: flex;
+    align-items: center;
+}
+.Tarjeta{
+    background: rgb(255, 96, 162);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 8px;
+}
+.Tarjeta img{
+    width: 100px;
+    border-radius: 8px;
+}

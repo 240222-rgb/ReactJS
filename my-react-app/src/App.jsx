@@ -1,10 +1,13 @@
+import ContenedorTargeta from "./ContenedorTargeta";
 import Encabezado from "./Encabezado";
+
 
 function App() {
  
   return (
   <div>
   <Encabezado />
+  <ContenedorTargeta />
   <h1>5A EVND</h1>
   <h2>Profesor:</h2>
   <h3>M.T.I Ricardo Luna Santos</h3>
