@@ -12,9 +12,7 @@ function App() {
   <ContenedorTargeta />
   <Rectangulo />
   <Footer />
-  <UserComponent/>
-  <ProfileComponent/>
-  <FeedComponent/>
+
   </div>
   )
 }
@@ -68,6 +66,6 @@ function FeedComponent(){
     </ul>
     </>
   )
-} 
+}
 
 export default App
