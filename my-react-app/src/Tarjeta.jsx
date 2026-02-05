@@ -1,12 +1,20 @@
-import './Tarjeta.css';
+import "./Tarjeta.css";
 
-function Tarjeta() {
-    return (
-        <div className="Tarjeta">
-            <h3>Tarjeta</h3>
-            <p>Contenido de la tarjeta</p>
-        </div>
-    );
+function Tarjeta({ imagen, titulo, descripcion }) {
+  return (
+    <div className="tarjeta">
+      <div
+        className="tarjeta-imagen"
+        style={{ backgroundImage: `url(${imagen})` }}
+      ></div>
+
+      <div className="tarjeta-contenido">
+        <h3>{titulo}</h3>
+        <p>{descripcion}</p>
+        <a href="#">Leer más...</a>
+      </div>
+    </div>
+  );
 }
 
 export default Tarjeta;

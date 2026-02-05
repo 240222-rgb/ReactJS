@@ -1,10 +1,41 @@
-.Tarjeta{
-    background: white;
-    border-radius: 8px;
-    padding: 12px;
-    margin: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+.tarjeta {
+  width: 260px;
+  background-color: #ff6aa9;
+  border-radius: 16px;
+  overflow: hidden; 
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.Tarjeta h3{ margin: 0 0 6px 0; }
-.Tarjeta p{ margin:0; font-size:14px; color:#333; }
+.tarjeta:hover {
+  transform: translateY(-6px);
+}
+
+
+.tarjeta-imagen {
+  width: 100%;
+  height: 160px; 
+  background-size: cover;
+  background-position: center;
+}
+
+
+.tarjeta-contenido {
+  padding: 16px;
+  text-align: left;
+}
+
+.tarjeta-contenido h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.tarjeta-contenido p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.tarjeta-contenido a {
+  color: blue;
+  font-size: 14px;
+}

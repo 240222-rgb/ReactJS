@@ -1,0 +1,32 @@
+.rectangulo {
+  width: 100%;
+  height: 400px;
+  background-image: url("./assets/rectangulo.jpg"); /* cambia el nombre si quieres */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 40px 0;
+}
+
+/* capa para que el texto se lea bonito */
+.rectangulo-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(184, 19, 111, 0.65); /* rosa con transparencia */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.rectangulo-overlay h2 {
+  color: #eaffc8;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.rectangulo-overlay p {
+  color: white;
+  font-size: 18px;
+}

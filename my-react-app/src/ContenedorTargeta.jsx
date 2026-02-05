@@ -1,27 +1,34 @@
-import './ContenedorTarjeta.css';
-import imgtargeta from './assets/imagen2.jpg';
+import Tarjeta from "./Tarjeta";
+import img1 from "./assets/tarjeta1.jpg";
+import img2 from "./assets/tarjeta2.jpg";
+import img3 from "./assets/tarjeta3.jpg";
+import img4 from "./assets/tarjeta4.jpg";
 
-function ContenedorTargeta() {
-    return (
-        <div className="ContenedorTargeta">
-            <h2>Contenedor de Tarjetas</h2>
-            <Tarjeta />
-            <Tarjeta />
-            <Tarjeta />
-            <Tarjeta />
-        </div>
-    );
+function ContenedorTarjeta() {
+  return (
+    <div className="ContenedorTargeta">
+      <Tarjeta
+        imagen={img1}
+        titulo="Título de la Tarjeta"
+        descripcion="Descripción de la tarjeta"
+      />
+      <Tarjeta
+        imagen={img2}
+        titulo="Título de la Tarjeta"
+        descripcion="Descripción de la tarjeta"
+      />
+      <Tarjeta
+        imagen={img3}
+        titulo="Título de la Tarjeta"
+        descripcion="Descripción de la tarjeta"
+      />
+      <Tarjeta
+        imagen={img4}
+        titulo="Título de la Tarjeta"
+        descripcion="Descripción de la tarjeta"
+      />
+    </div>
+  );
 }
-export default ContenedorTargeta;
 
-function Tarjeta() {
-    return(
-        <div className="Tarjeta">
-            <img src={imgtargeta} alt="Imagen Tarjeta" />
-            <h3>Titulo de la Tarjeta</h3>
-            <p>Descripcion de la tarjeta</p>
-            < a href='#'>Leer mas...</a>
-        </div>
-    );
-}
-    
+export default ContenedorTarjeta;

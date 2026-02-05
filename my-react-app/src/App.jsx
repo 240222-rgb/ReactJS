@@ -1,5 +1,7 @@
 import ContenedorTargeta from "./ContenedorTargeta";
 import Encabezado from "./Encabezado";
+import Rectangulo from "./Rectangulo";
+import Footer from "./Footer";
 
 
 function App() {
@@ -8,9 +10,8 @@ function App() {
   <div>
   <Encabezado />
   <ContenedorTargeta />
-  <h1>5A EVND</h1>
-  <h2>Profesor:</h2>
-  <h3>M.T.I Ricardo Luna Santos</h3>
+  <Rectangulo />
+  <Footer />
   <UserComponent/>
   <ProfileComponent/>
   <FeedComponent/>
@@ -67,6 +68,6 @@ function FeedComponent(){
     </ul>
     </>
   )
-}
+} 
 
 export default App
