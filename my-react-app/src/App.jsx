@@ -1,3 +1,4 @@
+import {useState} from "react";
 import ContenedorTargeta from "./ContenedorTargeta";
 import Encabezado from "./Encabezado";
 import Rectangulo from "./Rectangulo";
@@ -5,11 +6,11 @@ import Footer from "./Footer";
 
 
 function App() {
- 
+  const [vista, setVista] = useState("Inicio");
   return (
   <div>
-  <Encabezado />
-  <ContenedorTargeta />
+  <Encabezado cambiarVista={setVista}/>
+  <ContenedorTargeta vista={vista}/>
   <Rectangulo />
   <Footer />
 

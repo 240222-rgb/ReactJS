@@ -3,12 +3,14 @@ import email from './assets/Email.png';
 import facebook from './assets/facebook.png'; 
 import instagram from './assets/instagram.png'; 
 import social from './assets/social.png';
+import PropTypes from 'prop-types';
 import './Encabezado.css';
-function Encabezado (){
+
+function Encabezado ({cambiarVista}){
     return (
         <div className="Encabezado">
             <Logo />
-            <Menu />
+            <Menu cambiarVista={cambiarVista} />
             <Redes />
         
         </div>
@@ -24,17 +26,16 @@ function Logo(){
     );
 }
 
-function Menu(){
+function Menu({cambiarVista}){
     return (
         <div className="menuDiv">
             <ul>
-                <li><a href='#'>Inicio</a></li>
-                <li><a href='#'>Acerca de</a></li>
-                <li><a href='#'>Productos</a></li>
-                <li><a href='#'>Galeria</a></li>
-                <li><a href='#'>Clientes</a></li>
-                <li><a href='#'>Contacto</a></li>
-                <li><a href='#'>Sucursales</a></li>
+                <li onClick={() => cambiarVista("Inicio")}>Inicio</li>
+                <li onClick={() => cambiarVista("AcercaDe")}>Acerca de</li>
+                <li onClick={() => cambiarVista("Productos")}>Productos</li>
+                <li onClick={() => cambiarVista("Galeria")}>Galeria</li>
+                <li onClick={() => cambiarVista("Sucursales")}>Sucursales</li>
+                <li onClick={() => cambiarVista("Contacto")}>Contacto</li>
             </ul>
         </div>
     );
@@ -51,5 +52,13 @@ function Redes(){
             </ul>
         </div>
     );
+}
+
+Menu.propTypes = {
+    cambiarVista: PropTypes.func.isRequired
+}
+
+Encabezado.propTypes = {
+    cambiarVista: PropTypes.func.isRequired
 }
 export default Encabezado 

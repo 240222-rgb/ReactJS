@@ -1,14 +1,28 @@
+import {useState} from "react";
+import AcercaDe from "./AcercaDe";
+import PropTypes from 'prop-types';
 import "./ContenedorTarjeta.css";
+
 
 import img1 from "./assets/tarjeta1.jpg";
 import img2 from "./assets/tarjeta2.jpg";
 import img3 from "./assets/tarjeta3.jpg";
 import img4 from "./assets/tarjeta4.jpg";
 
-function ContenedorTargeta() {
+function ContenedorTargeta({vista}) {
+  const vistas ={
+    "Inicio": <Inicio />,
+    "AcercaDe": <AcercaDe />
+  }
+  return(
+    <div className="contenedorDiv">
+      {vistas[vista] || vistas["Inicio"]}
+    </div>
+  );
+}
+
   return (
     <div className="ContenedorTargeta">
-
       <div className="Tarjeta">
         <img src={img1} alt="Tarjeta 1" />
         <div className="Tarjeta-contenido">
@@ -33,8 +47,10 @@ function ContenedorTargeta() {
         </div>
       </div>
 
+      function Tarjeta (props){
+        return (
       <div className="Tarjeta">
-        <img src={img4} alt="Tarjeta 4" />
+        <img src={props.image} alt="Tarjeta 4" />
         <div className="Tarjeta-contenido">
           <h3>Super Gato 4</h3>
           <p>El gato que siempre está en movimiento</p>
@@ -43,6 +59,9 @@ function ContenedorTargeta() {
 
     </div>
   );
-}
+
+  ContenedorTargetas.propTypes = {
+    vista: PropTypes.string.isRequired
+  };
 
 export default ContenedorTargeta;
