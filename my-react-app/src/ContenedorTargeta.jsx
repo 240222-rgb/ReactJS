@@ -1,67 +1,70 @@
-import {useState} from "react";
+import PropTypes from "prop-types";
 import AcercaDe from "./AcercaDe";
-import PropTypes from 'prop-types';
 import "./ContenedorTarjeta.css";
-
 
 import img1 from "./assets/tarjeta1.jpg";
 import img2 from "./assets/tarjeta2.jpg";
 import img3 from "./assets/tarjeta3.jpg";
 import img4 from "./assets/tarjeta4.jpg";
 
-function ContenedorTargeta({vista}) {
-  const vistas ={
-    "Inicio": <Inicio />,
-    "AcercaDe": <AcercaDe />
-  }
-  return(
-    <div className="contenedorDiv">
-      {vistas[vista] || vistas["Inicio"]}
+
+function Tarjeta({ image, titulo, descripcion }) {
+  return (
+    <div className="Tarjeta">
+      <img src={image} alt={titulo} />
+      <div className="Tarjeta-contenido">
+        <h3>{titulo}</h3>
+        <p>{descripcion}</p>
+      </div>
     </div>
   );
 }
 
+Tarjeta.propTypes = {
+  image: PropTypes.string.isRequired,
+  titulo: PropTypes.string.isRequired,
+  descripcion: PropTypes.string.isRequired,
+};
+
+
+function ContenedorTargeta({ vista }) {
+
+  if (vista === "AcercaDe") {
+    return <AcercaDe />;
+  }
+
+ 
   return (
     <div className="ContenedorTargeta">
-      <div className="Tarjeta">
-        <img src={img1} alt="Tarjeta 1" />
-        <div className="Tarjeta-contenido">
-          <h3>Super Gato 1</h3>
-          <p>El es el gato que piensa que es la monalisa</p>
-        </div>
-      </div>
+      <Tarjeta
+        image={img1}
+        titulo="Super Gato 1"
+        descripcion="El es el gato que piensa que es la monalisa"
+      />
 
-      <div className="Tarjeta">
-        <img src={img2} alt="Tarjeta 2" />
-        <div className="Tarjeta-contenido">
-          <h3>Super Gato 2</h3>
-          <p>El gato privilegiado wueroo</p>
-        </div>
-      </div>
+      <Tarjeta
+        image={img2}
+        titulo="Super Gato 2"
+        descripcion="El gato privilegiado wueroo"
+      />
 
-      <div className="Tarjeta">
-        <img src={img3} alt="Tarjeta 3" />
-        <div className="Tarjeta-contenido">
-          <h3>Super Gato 3</h3>
-          <p>El gato que no se rinde nunca</p>
-        </div>
-      </div>
+      <Tarjeta
+        image={img3}
+        titulo="Super Gato 3"
+        descripcion="El gato que no se rinde nunca"
+      />
 
-      function Tarjeta (props){
-        return (
-      <div className="Tarjeta">
-        <img src={props.image} alt="Tarjeta 4" />
-        <div className="Tarjeta-contenido">
-          <h3>Super Gato 4</h3>
-          <p>El gato que siempre está en movimiento</p>
-        </div>
-      </div>
-
+      <Tarjeta
+        image={img4}
+        titulo="Super Gato 4"
+        descripcion="El gato que siempre está en movimiento"
+      />
     </div>
   );
+}
 
-  ContenedorTargetas.propTypes = {
-    vista: PropTypes.string.isRequired
-  };
+ContenedorTargeta.propTypes = {
+  vista: PropTypes.string.isRequired,
+};
 
 export default ContenedorTargeta;
