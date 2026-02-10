@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import AcercaDe from "./AcercaDe";
+import Galeria from "./Galeria";
+import Sucursales from "./Sucursales";
+import Contacto from "./Contacto";
 import "./ContenedorTarjeta.css";
 
 import img1 from "./assets/tarjeta1.jpg";
 import img2 from "./assets/tarjeta2.jpg";
 import img3 from "./assets/tarjeta3.jpg";
 import img4 from "./assets/tarjeta4.jpg";
-
 
 function Tarjeta({ image, titulo, descripcion }) {
   return (
@@ -26,14 +28,25 @@ Tarjeta.propTypes = {
   descripcion: PropTypes.string.isRequired,
 };
 
-
 function ContenedorTargeta({ vista }) {
 
   if (vista === "AcercaDe") {
     return <AcercaDe />;
   }
 
- 
+  if (vista === "Galeria") {
+    return <Galeria />;
+  }
+
+  if (vista === "Sucursales") {
+    return <Sucursales />;
+  }
+
+  if (vista === "Contacto") {
+    return <Contacto />;
+  }
+
+  // 👇 ESTE return YA ESTÁ BIEN COLOCADO
   return (
     <div className="ContenedorTargeta">
       <Tarjeta
