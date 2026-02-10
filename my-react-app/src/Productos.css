@@ -1,0 +1,80 @@
+
+.productos-container {
+  padding: 40px 20px;
+  background-color: #0f172a;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f8fafc;
+}
+
+
+.productos-titulo {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #b8136f;
+}
+
+.productos-descripcion {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  font-size: 1.1rem;
+  color: #cbd5f5;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  align-items: stretch;
+}
+
+.producto-card {
+  background-color: #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(56, 189, 248, 0.3);
+}
+
+.producto-card img {
+  width: 100%;
+  max-width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.producto-card:hover img {
+  transform: scale(1.05);
+}
+
+.producto-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #f12294;
+}
+
+.producto-card p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #e5e7eb;
+}
+
+.producto-card span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #22c55e;
+}

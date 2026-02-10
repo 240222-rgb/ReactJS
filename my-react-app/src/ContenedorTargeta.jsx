@@ -3,6 +3,7 @@ import AcercaDe from "./AcercaDe";
 import Galeria from "./Galeria";
 import Sucursales from "./Sucursales";
 import Contacto from "./Contacto";
+import Productos from "./Productos";
 import "./ContenedorTarjeta.css";
 
 import img1 from "./assets/tarjeta1.jpg";
@@ -34,6 +35,10 @@ function ContenedorTargeta({ vista }) {
     return <AcercaDe />;
   }
 
+  if (vista === "Productos") {
+    return <Productos />;
+  }
+
   if (vista === "Galeria") {
     return <Galeria />;
   }
@@ -46,7 +51,6 @@ function ContenedorTargeta({ vista }) {
     return <Contacto />;
   }
 
-  // 👇 ESTE return YA ESTÁ BIEN COLOCADO
   return (
     <div className="ContenedorTargeta">
       <Tarjeta

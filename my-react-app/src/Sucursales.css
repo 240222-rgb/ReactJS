@@ -1,0 +1,71 @@
+.sucursales-container {
+  padding: 40px 20px;
+  background-color: #0f172a;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f8fafc;
+}
+
+.sucursales-titulo {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: #b8136f; /* fucsia */
+}
+
+.sucursales-descripcion {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 1.1rem;
+  color: #f5a6cf; /* fucsia suave */
+}
+
+/* Grid de sucursales */
+.sucursales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  align-items: stretch;
+}
+
+/* Card individual */
+.sucursal-card {
+  background-color: #1e293b;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(184, 19, 111, 0.4); /* sombra fucsia suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sucursal-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(184, 19, 111, 0.6); /* sombra fucsia intensa */
+}
+
+.sucursal-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.sucursal-card:hover img {
+  transform: scale(1.05);
+}
+
+.sucursal-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #b8136f; /* fucsia */
+}
+
+.sucursal-card p {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #e5e7eb;
+}
