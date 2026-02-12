@@ -1,0 +1,49 @@
+.contacto-section {
+  background-color: #0f1b2d;
+  min-height: 80vh;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.contacto-titulo {
+  font-size: 42px;
+  color: #b8136f; 
+  margin-bottom: 15px;
+}
+
+.contacto-subtitulo {
+  font-size: 18px;
+  color: #d6e6b7; 
+  margin-bottom: 40px;
+}
+
+.contacto-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.contacto-card {
+  background-color: #1c2a40; 
+  padding: 30px;
+  width: 260px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease;
+}
+
+.contacto-card h3 {
+  color: #a35481;
+  margin-bottom: 10px;
+}
+
+.contacto-card p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.contacto-card:hover {
+  transform: translateY(-8px);
+}

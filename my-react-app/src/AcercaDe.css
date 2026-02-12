@@ -1,0 +1,34 @@
+.acerca-section {
+  background-color: #0f1b2d; 
+  min-height: 80vh;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.acerca-titulo {
+  font-size: 42px;
+  color: #b8136f;
+  margin-bottom: 15px;
+}
+
+.acerca-subtitulo {
+  font-size: 18px;
+  color: #d6e6b7; 
+  margin-bottom: 40px;
+}
+
+.acerca-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #1c2a40; 
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.acerca-card p {
+  margin-bottom: 20px;
+}

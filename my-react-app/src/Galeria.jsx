@@ -4,32 +4,32 @@ const galerias = [
   {
     id: 1,
     titulo: "Concierto en vivo",
-    imagen: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2",
+    imagen: "https://cdn.milenio.com/uploads/media/2022/05/07/coliseo-centenario-volvio-sucursal-manicomio.JPG",
   },
   {
     id: 2,
     titulo: "Estudio de grabación",
-    imagen: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
+    imagen: "https://objetos-xlk.estaticos-marca.com/uploads/2025/03/21/16735162625883.jpeg",
   },
   {
     id: 3,
     titulo: "Banda en acción",
-    imagen: "https://images.unsplash.com/photo-1519681393784-d120267933ba",
+    imagen: "https://imagenes.elpais.com/resizer/v2/UJ6QVAB2XNCUNETEU2TLYMFKDE.jpg?auth=2ac07f8f14a7f0fefe5d0cb60aa3e64a8a9938ee87dc83352b0e8daa5f86c17f&width=414",
   },
   {
     id: 4,
     titulo: "Teclado y sintetizadores",
-    imagen: "https://images.unsplash.com/photo-1515187029135-18ee286d815b",
+    imagen: "https://cdn.korg.com/es/news/upload/572bc85e450281c16131b4a107fda2a9.jpg",
   },
   {
     id: 5,
     titulo: "Ensayo acústico",
-    imagen: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+    imagen: "https://manualguitarraelectrica.com/wp-content/uploads/2023/08/Guitarra-Clasica-Espanola.jpg.webp",
   },
   {
     id: 6,
     titulo: "Guitarra eléctrica close-up",
-    imagen: "https://images.unsplash.com/photo-1511379938547-c1f69419868d",
+    imagen: "https://www.txirula.com/modules/dbblog/views/img/post/Choosing-the-Best-Guitar-Body-Style-Featured-Image.jpg",
   },
 ];
 

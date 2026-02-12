@@ -6,10 +6,10 @@ import Contacto from "./Contacto";
 import Productos from "./Productos";
 import "./ContenedorTarjeta.css";
 
-import img1 from "./assets/tarjeta1.jpg";
-import img2 from "./assets/tarjeta2.jpg";
-import img3 from "./assets/tarjeta3.jpg";
-import img4 from "./assets/tarjeta4.jpg";
+import img1 from "./assets/1.png";
+import img2 from "./assets/2.png";
+import img3 from "./assets/3.png";
+import img4 from "./assets/4.png";
 
 function Tarjeta({ image, titulo, descripcion }) {
   return (
