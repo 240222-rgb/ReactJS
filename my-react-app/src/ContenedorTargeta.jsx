@@ -55,26 +55,26 @@ function ContenedorTargeta({ vista }) {
     <div className="ContenedorTargeta">
       <Tarjeta
         image={img1}
-        titulo="Super Gato 1"
-        descripcion="El es el gato que piensa que es la monalisa"
+        titulo="La música es el lenguaje universal del alma"
+        descripcion="La música no necesita traducción. No importa el idioma o el país, todos podemos sentirla."
       />
 
       <Tarjeta
         image={img2}
-        titulo="Super Gato 2"
-        descripcion="El gato privilegiado wueroo"
+        titulo="Donde las palabras fallan, la música habla."
+        descripcion="Hay emociones que no podemos explicar con palabras, pero una canción puede expresarlas perfectamente."
       />
 
       <Tarjeta
         image={img3}
-        titulo="Super Gato 3"
-        descripcion="El gato que no se rinde nunca"
+        titulo="La música puede cambiar el mundo."
+        descripcion="Una canción puede inspirar, motivar o sanar. Si cambia a las personas, también puede transformar la sociedad."
       />
 
       <Tarjeta
         image={img4}
-        titulo="Super Gato 4"
-        descripcion="El gato que siempre está en movimiento"
+        titulo="La música convierte momentos ordinarios en recuerdos extraordinarios."
+        descripcion="Muchas veces asociamos canciones con momentos importantes de nuestra vida."
       />
     </div>
   );
