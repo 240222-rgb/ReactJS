@@ -1,4 +1,6 @@
 import "./Sucursales.css";
+import Mapa from "./Mapa";
+
 
 const sucursales = [
   {
@@ -7,6 +9,8 @@ const sucursales = [
     direccion: "Av. Principal 123, Huauchinango, Puebla",
     telefono: "+56 9 1234 5678",
     imagen: "https://www.lugaresturisticosenmexico.com/wp-content/uploads/2020/01/HUACHINANGO-PUEBLA-PUEBLO-MAGICO.jpg",
+    lat: 20.1750,
+    lng: -98.0550,
   },
   {
     id: 2,
@@ -14,6 +18,8 @@ const sucursales = [
     direccion: "Calle Norte 456, Xicotepec, Puebla",
     telefono: "+56 9 2345 6789",
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlnS2AApwQX5RcYEHJHXkdTXypmjRg8niciQ&s",
+    lat: 20.2760,
+    lng: -97.9610,
   },
   {
     id: 3,
@@ -21,6 +27,8 @@ const sucursales = [
     direccion: "Av. Sur 789, Zocalo, Puebla",
     telefono: "+56 9 3456 7890",
     imagen: "https://i.pinimg.com/736x/85/2d/8f/852d8fda7303d679f016c78d9a6c7ff9.jpg",
+    lat: 19.0414,
+    lng: -98.2063,
   },
   {
     id: 4,
@@ -28,6 +36,8 @@ const sucursales = [
     direccion: "Calle Este 101, Chignahuapan, Puebla",
     telefono: "+56 9 4567 8901",
     imagen: "https://mexicorutamagica.mx/wp-content/uploads/2021/07/chignahuapan_001-tw-CanalOnceTV.jpg",
+    lat: 19.8380,
+    lng: -98.0310,
   },
 ];
 
@@ -46,6 +56,11 @@ function Sucursales() {
             <h3>{sucursal.nombre}</h3>
             <p>{sucursal.direccion}</p>
             <p>Tel: {sucursal.telefono}</p>
+            <Mapa
+            lat={sucursal.lat}
+            lng={sucursal.lng}
+            nombre_sucursal={sucursal.nombre}
+    />
           </div>
         ))}
       </div>
