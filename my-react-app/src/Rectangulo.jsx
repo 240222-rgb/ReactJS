@@ -1,4 +1,4 @@
-import Mapa from './Mapa';
+import MapaGeolocalizacion from './MapaGeolocalizacion';
 import "./Rectangulo.css";
 
 function Rectangulo() {
@@ -7,10 +7,8 @@ function Rectangulo() {
       <div className="rectangulo-overlay">
         <h2>Diseño Creativo</h2>
         <p>Ideas visuales que conectan con tu marca</p>
-        <Mapa 
-          lat = {20.2682762109786}
-          lng = {-97.9572129259522}
-          nombre_sucursal={"Sucursal Norte"}
+        <MapaGeolocalizacion 
+          
         />
       </div>
     </section>
