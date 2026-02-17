@@ -5,6 +5,7 @@ import instagram from './assets/instagram.png';
 import social from './assets/social.png';
 import PropTypes from 'prop-types';
 import './Encabezado.css';
+import Clima from './Clima';
 
 function Encabezado ({cambiarVista}){
     return (
@@ -50,7 +51,8 @@ function Redes(){
                  <li><a href='#'><img src={instagram} alt="instagram" /></a></li>
                  <li><a href='#'><img src={social} alt="social" /></a></li>
             </ul>
-        </div>
+            <Clima />
+            </div>
     );
 }
 
