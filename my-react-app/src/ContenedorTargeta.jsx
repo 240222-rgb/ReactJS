@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import AcercaDe from "./AcercaDe";
+import Usuarios from "./Usuarios";
 import Galeria from "./Galeria";
+import Carrito from "./Carrito";
 import Sucursales from "./Sucursales";
 import Contacto from "./Contacto";
 import Productos from "./Productos";
@@ -34,6 +36,9 @@ function ContenedorTargeta({ vista }) {
   if (vista === "AcercaDe") {
     return <AcercaDe />;
   }
+   if (vista === "Usuarios") {
+    return <Usuarios />;
+  }
 
   if (vista === "Productos") {
     return <Productos />;
@@ -41,6 +46,9 @@ function ContenedorTargeta({ vista }) {
 
   if (vista === "Galeria") {
     return <Galeria />;
+  }
+  if (vista === "Carrito") {
+    return <Carrito />;
   }
 
   if (vista === "Sucursales") {
