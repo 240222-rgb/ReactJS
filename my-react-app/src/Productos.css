@@ -78,3 +78,49 @@
   font-weight: bold;
   color: #22c55e;
 }
+.botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.btn-carrito {
+  flex: 1;
+  padding: 8px;
+  background-color: #22c55e;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-carrito:hover {
+  background-color: #16a34a;
+  transform: scale(1.05);
+}
+
+.btn-eliminar {
+  flex: 1;
+  padding: 8px;
+  background-color: #ef4444;
+  border: none;
+  border-radius: 8px;
+  color: white !important;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #dc2626;
+  transform: scale(1.05);
+}
+
+.carrito-contador {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #38bdf8;
+}
