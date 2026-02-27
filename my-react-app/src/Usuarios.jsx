@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Usuarios.css";
+import RegistrarUsuario from "./RegistrarUsuario";
 
 function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
@@ -13,6 +14,7 @@ function Usuarios() {
 
   return (
     <div className="usuarios-container">
+      <RegistrarUsuario></RegistrarUsuario>
       <h1>Lista de Usuarios</h1>
 
       <table className="usuarios-table">
