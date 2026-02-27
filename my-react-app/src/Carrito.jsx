@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "./Services/api";
-import "./Carrito.css"; 
+import "./Carrito.css";
 
 function Carrito() {
   const [carritos, setCarritos] = useState([]);
@@ -21,10 +21,30 @@ function Carrito() {
     obtenerCarritos();
   }, []);
 
+  
   const handleEliminar = (id) => {
     const confirmar = window.confirm("¿Eliminar este carrito?");
     if (confirmar) {
       setCarritos(carritos.filter((carrito) => carrito.id !== id));
+    }
+  };
+
+  const handleEliminarProducto = (carritoId, productId) => {
+    const confirmar = window.confirm("¿Eliminar este producto del carrito?");
+    if (confirmar) {
+      setCarritos(
+        carritos.map((carrito) => {
+          if (carrito.id === carritoId) {
+            return {
+              ...carrito,
+              products: carrito.products.filter(
+                (producto) => producto.productId !== productId
+              ),
+            };
+          }
+          return carrito;
+        })
+      );
     }
   };
 
@@ -50,31 +70,50 @@ function Carrito() {
           return (
             <div key={carrito.id} className="tarjetaDiv">
               <h3>Carrito ID: {carrito.id}</h3>
+
               <p>
                 <strong>Usuario:</strong> {carrito.userId}
               </p>
+
               <p>
                 <strong>Fecha:</strong>{" "}
                 {new Date(carrito.date).toLocaleDateString()}
               </p>
+
               <p>
                 <strong>Productos:</strong>
               </p>
+
               <ul>
                 {carrito.products.map((producto, index) => (
-                  <li key={index}>
-                    Producto ID: {producto.productId} | Cantidad: {producto.quantity}
+                  <li key={index} className="producto-item">
+                    Producto ID: {producto.productId} | Cantidad:{" "}
+                    {producto.quantity}
+
+                    <button
+                      className="btn-eliminar-producto"
+                      onClick={() =>
+                        handleEliminarProducto(
+                          carrito.id,
+                          producto.productId
+                        )
+                      }
+                    >
+                      ❌
+                    </button>
                   </li>
                 ))}
               </ul>
+
               <p>
                 <strong>Total productos:</strong> {totalCantidad}
               </p>
+
               <button
                 className="btn-eliminar"
                 onClick={() => handleEliminar(carrito.id)}
               >
-                Eliminar
+                Eliminar carrito
               </button>
             </div>
           );
@@ -85,7 +124,3 @@ function Carrito() {
 }
 
 export default Carrito;
-
-
-
-
