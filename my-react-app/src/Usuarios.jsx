@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
-import "./Usuarios.css";
-import RegistrarUsuario from "./RegistrarUsuario";
+import './Usuarios.css';
+import RegistrarUsuario from './RegistrarUsuario';
+import api from './RegistrarUsuario';
 
 function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useStatetate(null);
+  const obtenerUsuarios = async () => {}
+  fetch("https://fakestoreapi.com/users")
+     /* .then((res) => res.json())
+      .then((data) => setUsuarios(data))
+      .catch((err) => console.error(err));*/
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsuarios(data))
-      .catch((err) => console.error(err));
+      obtenerUsuarios();
   }, []);
+
+  if(cargando) return <p>Cargando usuarios...</p>
 
   return (
     <div className="usuarios-container">
-      <RegistrarUsuario></RegistrarUsuario>
+      <RegistrarUsuario
+      usuarioEditado={usuarioSeleccionado}
+      limpiarSeleccion={setUsuarioSeleccionado}
+      onActualizacionExitosa={obtenerUsuarios}></RegistrarUsuario>
       <h1>Lista de Usuarios</h1>
 
       <table className="usuarios-table">
@@ -45,8 +55,8 @@ function Usuarios() {
               <td>{user.username}</td>
               <td>{user.password}</td>
               <td className="acciones">
-                <button className="btn-editar">Editar</button>
-                <button className="btn-eliminar">Eliminar</button>
+                <button className="btn-editar" onClick={()=>setUsuarioSeleccionado(usuario)}>Editar</button>
+                <button className="btn-eliminar" >Eliminar</button>
               </td>
             </tr>
           ))}
