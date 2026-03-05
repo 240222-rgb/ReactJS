@@ -1,69 +1,76 @@
 import { useState, useEffect } from 'react';
 import api from './Services/api';
-import "./RegistrarUsuario.css";
+import './registrarUsuario.css';
+import { use } from 'react';
 
 function RegistrarUsuario({usuarioEditado, limpiarSeleccion, onActualizacionExitosa}) {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPasword] = useState('');
+  const[username, setUsername] = useState('');
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
 
-  useEffect(()=>{
-    if (usuarioEditado){
+useEffect(() => {
+    if (usuarioEditado) {
       setUsername(usuarioEditado.username);
       setEmail(usuarioEditado.email);
-      setPasword(usuarioEditado.password);
-    }else{
+      setPassword(usuarioEditado.password);
+    } else {
       resetForm();
     }
-  },[usuarioEditado]);
+},[usuarioEditado]);
 
-  const resetForm =()=>{
+const resetForm = () => {
     setUsername('');
     setEmail('');
-    setPasword('');
-  };
+    setPassword('');
+};
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
-    const nuevoUsuario = {username, email, password};
+    const nuevoUsuario = { username, email, password };
     try{
-      if(usuarioEditado){
-        const response = await api.put(`/user/${usuarioEditado.ide}`, nuevoUsuario);
-        console.log('Usuario Actualizado', respuesta.data)
-        alert('Usuario actualizado con exito');
+      if (usuarioEditado) {
+        const response = await api.put(`/users/${usuarioEditado.id}`, nuevoUsuario);
+        console.log('Usuario actualizado:', response.data);
+        alert('Usuario actualizado exitosamente');
         limpiarSeleccion();
-      }else{
-        const respuesta = await api.post(`/users/`, nuevoUsuario);
-        console.log('Usuario Registrado', respuesta.data);
-        alert('Usuario Registrado con exito');
+      } else {
+        const response = await api.post('/users', nuevoUsuario);
+        console.log('Usuario registrado:', response.data);
+        alert('Usuario registrado con éxito');
         resetForm();
       }
-      if(onActualizacionExitosa) onActualizacionExitosa();
-    }catch (error) {
+      if (onActualizacionExitosa) onActualizacionExitosa();
+    } catch (error) { 
       console.error('Error al registrar:', error);
-      alert ('¡Error al procesar la solicitud');
+      alert('Error al procesar la solicitud');
     }
-  };
+};
 
   return (
-    <div className="registro-container">
-       <h2>Registrar Usuario</h2>
-      <form onSubmit={handleSubmit}></form>
-      <form className="registro-form">
-        
-        <label>Username</label>
-        <input type="text" name="username" value={username} onChange={(e)=> setUsername(e.target.value)}/>
+    <div className="registrar-container">
+      <h2>Registrar Usuario</h2>
+      <form onSubmit={handleSubmit} className="registrar-form">
 
-        <label>Contraseña</label>
-        <input type="password" name="password" value={password} onChange={(e)=> setPasword(e.target.value)}/>
+        <div className="form-group">
+          <label htmlFor="username">Nombre de usuario</label>
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </div>
 
-        <label>Correo Electrónico</label>
-        <input type="text" name="email"  value={email} onChange={(e)=> setEmail(e.target.value)}/>
+        <div className="form-group">
+          <label htmlFor="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        </div>
 
-        <button type="submit">Registrar</button>
+        <div className="form-group">
+          <label htmlFor="password">Contraseña</label>
+          <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+
+        <button type="submit">{usuarioEditado ? 'Actualizar' : 'Registrar'}</button>
       </form>
     </div>
   );
 }
 
 export default RegistrarUsuario;
+
