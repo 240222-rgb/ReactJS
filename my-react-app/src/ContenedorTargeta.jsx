@@ -6,6 +6,7 @@ import Carrito from "./Carrito";
 import Sucursales from "./Sucursales";
 import Contacto from "./Contacto";
 import Productos from "./Productos";
+import Login from "./Login";
 import "./ContenedorTarjeta.css";
 
 import img1 from "./assets/1.png";
@@ -57,6 +58,10 @@ function ContenedorTargeta({ vista }) {
 
   if (vista === "Contacto") {
     return <Contacto />;
+  }
+
+  if (vista === "Login") {
+    return <Login />;
   }
 
   return (
