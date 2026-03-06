@@ -3,14 +3,17 @@ import ContenedorTargeta from "./ContenedorTargeta";
 import Encabezado from "./Encabezado";
 import Rectangulo from "./Rectangulo";
 import Footer from "./Footer";
+import { AuthProvider } from "./AuthContext";
 
 
 function App() {
   const [vista, setVista] = useState("Inicio");
   return (
   <div>
+  <AuthProvider>
   <Encabezado cambiarVista={setVista}/>
   <ContenedorTargeta vista={vista}/>
+  </AuthProvider>
   <Rectangulo />
   <Footer />
 
