@@ -1,80 +1,83 @@
 import './Login.css';
 import { useState } from 'react';
+import api from './Services/api'; 
+import { useAuth } from "./AuthContext"; 
 
-function Login() {
+const Login = () => {
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
-  const iniciarSesion = async (e) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://fakestoreapi.com/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password
-        })
+      setError('');
+
+      const response = await api.post('/auth/login', {
+        username,
+        password,
       });
 
-      const data = await response.json();
+      const token = response.data.token;
 
-      console.log("TOKEN:", data.token);
+      login(token);
 
-      alert("Iniciaste sesión correctamente");
+      localStorage.setItem('authToken', token);
 
-    } catch (error) {
-      console.error("Error en login", error);
-      alert("Error al iniciar sesión");
+      alert('Login exitoso!');
+
+    } catch (err) {
+      console.error('Error en login:', err);
+      setError('Usuario o contraseña incorrecta');
     }
   };
 
   return (
-    <div className="login">
-      <div className="login-card">
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Iniciar Sesión</h2>
 
-        <h1>Iniciar Sesión</h1>
+        <form className="login-form" onSubmit={handleLogin}>
 
-        <form onSubmit={iniciarSesion} className="login-form">
-
-          <div className="input-group">
-            <label>Usuario</label>
-            <input
+          <div className="form-group">
+            <label>Nombre de usuario</label>
+            <input 
               type="text"
-              placeholder="Ingresa tu usuario"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Tu usuario"
             />
           </div>
 
-          <div className="input-group">
+          <div className="form-group">
             <label>Contraseña</label>
-            <input
+            <input 
               type="password"
-              placeholder="Ingresa tu contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Tu contraseña"
             />
           </div>
 
-          <button className="btn-login">
+          {error && <p className="login-error">{error}</p>}
+
+          <button type="submit" className="btn-login">
             Acceder
           </button>
 
+          <div className="login-options">
+            <button type="button" className="btn-link">Crear cuenta</button>
+            <button type="button" className="btn-link">Recuperar contraseña</button>
+          </div>
+
         </form>
-
-        <div className="login-links">
-          <a href="#">Crear cuenta</a>
-          <a href="#">Recuperar contraseña</a>
-        </div>
-
       </div>
     </div>
   );
-}
+};
 
 export default Login;
