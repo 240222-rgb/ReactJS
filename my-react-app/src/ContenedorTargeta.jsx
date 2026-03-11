@@ -32,12 +32,13 @@ Tarjeta.propTypes = {
   descripcion: PropTypes.string.isRequired,
 };
 
-function ContenedorTargeta({ vista }) {
+function ContenedorTargeta({ vista, cambiarVista }) {
 
   if (vista === "AcercaDe") {
     return <AcercaDe />;
   }
-   if (vista === "Usuarios") {
+
+  if (vista === "Usuarios") {
     return <Usuarios />;
   }
 
@@ -48,6 +49,7 @@ function ContenedorTargeta({ vista }) {
   if (vista === "Galeria") {
     return <Galeria />;
   }
+
   if (vista === "Carrito") {
     return <Carrito />;
   }
@@ -61,7 +63,7 @@ function ContenedorTargeta({ vista }) {
   }
 
   if (vista === "Login") {
-    return <Login />;
+    return <Login cambiarVista={cambiarVista} />;
   }
 
   return (
@@ -95,6 +97,7 @@ function ContenedorTargeta({ vista }) {
 
 ContenedorTargeta.propTypes = {
   vista: PropTypes.string.isRequired,
+  cambiarVista: PropTypes.func.isRequired,
 };
 
 export default ContenedorTargeta;

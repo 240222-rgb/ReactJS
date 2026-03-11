@@ -12,7 +12,7 @@ function App() {
   <div>
   <AuthProvider>
   <Encabezado cambiarVista={setVista}/>
-  <ContenedorTargeta vista={vista}/>
+  <ContenedorTargeta vista={vista} cambiarVista={setVista}/>
   </AuthProvider>
   <Rectangulo />
   <Footer />

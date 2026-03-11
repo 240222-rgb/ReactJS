@@ -1,12 +1,18 @@
 import { createContext, useState, useContext } from 'react';
+
 const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggenIn] = useState(!!localStorage.getItem('token'))
+
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        !!localStorage.getItem('token')
+    );
 
     const login = (token) => {
         localStorage.setItem('token', token);
-        setIsLoggenIn(true);
+        setIsLoggedIn(true);
     };
+
     const logout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
@@ -18,10 +24,13 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
+
 export const useAuth = () => {
     const context = useContext(AuthContext);
+
     if (!context) {
         throw new Error("useAuth debe usarse dentro de un AuthProvider");
     }
+
     return context;
 };

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import api from './Services/api'; 
 import { useAuth } from "./AuthContext"; 
 
-const Login = () => {
+const Login = ({ cambiarVista }) => {
 
   const { login } = useAuth();
 
@@ -25,6 +25,7 @@ const Login = () => {
       const token = response.data.token;
 
       login(token);
+     cambiarVista("Inicio");
 
       localStorage.setItem('authToken', token);
 
