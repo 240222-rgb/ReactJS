@@ -74,7 +74,7 @@ const Login = ({ cambiarVista }) => {
            <button 
             type="button" 
              className="btn-link"
-               onClick={() => cambiarVista("Usuarios")}
+               onClick={() => cambiarVista("Registro")}
         >
                Crear cuenta
               </button>

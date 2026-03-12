@@ -3,10 +3,12 @@ import AcercaDe from "./AcercaDe";
 import Usuarios from "./Usuarios";
 import Galeria from "./Galeria";
 import Carrito from "./Carrito";
+import Categoria from "./Categoria";
 import Sucursales from "./Sucursales";
 import Contacto from "./Contacto";
 import Productos from "./Productos";
 import Login from "./Login";
+import { useAuth } from "./AuthContext";
 import "./ContenedorTarjeta.css";
 
 import img1 from "./assets/1.png";
@@ -33,6 +35,7 @@ Tarjeta.propTypes = {
 };
 
 function ContenedorTargeta({ vista, cambiarVista }) {
+  const { isLoggedIn } = useAuth();
 
   if (vista === "AcercaDe") {
     return <AcercaDe />;
@@ -42,8 +45,12 @@ function ContenedorTargeta({ vista, cambiarVista }) {
     return <Usuarios />;
   }
 
+  if (vista === "Registro") {
+    return <Usuarios mostrarLista={false} />;
+  }
+
   if (vista === "Productos") {
-    return <Productos />;
+    return <Productos puedeEditar={isLoggedIn} />;
   }
 
   if (vista === "Galeria") {
@@ -52,6 +59,10 @@ function ContenedorTargeta({ vista, cambiarVista }) {
 
   if (vista === "Carrito") {
     return <Carrito />;
+  }
+
+  if (vista === "Categorias") {
+    return <Categoria />;
   }
 
   if (vista === "Sucursales") {

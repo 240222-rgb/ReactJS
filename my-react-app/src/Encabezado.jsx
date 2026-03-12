@@ -1,4 +1,4 @@
-import miLogo from './assets/Logo.png';
+﻿import miLogo from './assets/Logo.png';
 import email from './assets/Email.png';  
 import facebook from './assets/facebook.png'; 
 import instagram from './assets/instagram.png'; 
@@ -44,6 +44,7 @@ function Menu({ cambiarVista }) {
 
         {isLoggedIn ? (
           <>
+            <li onClick={() => cambiarVista("Categorias")}>Categorias</li>
             <li onClick={() => cambiarVista("Usuarios")}>Usuarios</li>
             <li onClick={() => cambiarVista("Carrito")}>Carrito</li>
             <li onClick={handleLogout}>Cerrar sesión</li>
@@ -83,3 +84,4 @@ Encabezado.propTypes = {
     cambiarVista: PropTypes.func.isRequired
 }
 export default Encabezado 
+

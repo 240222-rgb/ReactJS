@@ -1,9 +1,9 @@
-import './Usuarios.css';
+﻿import './Usuarios.css';
 import { useEffect, useState } from 'react';
 import api from './Services/api';
 import RegistrarUsuario from './registrarUsuario';
 
-function Usuario() {
+function Usuario({ mostrarLista = true }) {
     const [usuarios, setUsuarios] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
@@ -31,39 +31,44 @@ function Usuario() {
             onActualizacionExitosa={obtenerUsuarios}
             />
 
-            <h1>Usuarios Registrados</h1>
-            <table className="tabla-usuarios">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {usuarios.map((usuario) => (
-                        <tr key={usuario.id}>
-                            <td>{usuario.name.firstname}</td>
-                            <td>{usuario.name.lastname}</td>
-                            <td>{usuario.address.street} {usuario.address.number} {usuario.address.city} {usuario.address.zipcode}</td>
-                            <td>{usuario.phone}</td>
-                            <td>{usuario.email}</td>
-                            <td>{usuario.username}</td>
-                            <td>{usuario.password}</td>
-                            <td><button className="editar" onClick={()=>setUsuarioSeleccionado(usuario)}>Editar</button></td>
-                            <td><button className="eliminar">Eliminar</button></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            {mostrarLista ? (
+                <>
+                    <h1>Usuarios Registrados</h1>
+                    <table className="tabla-usuarios">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>DirecciÃ³n</th>
+                                <th>TelÃ©fono</th>
+                                <th>Correo</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {usuarios.map((usuario) => (
+                                <tr key={usuario.id}>
+                                    <td>{usuario.name.firstname}</td>
+                                    <td>{usuario.name.lastname}</td>
+                                    <td>{usuario.address.street} {usuario.address.number} {usuario.address.city} {usuario.address.zipcode}</td>
+                                    <td>{usuario.phone}</td>
+                                    <td>{usuario.email}</td>
+                                    <td>{usuario.username}</td>
+                                    <td>{usuario.password}</td>
+                                    <td><button className="editar" onClick={()=>setUsuarioSeleccionado(usuario)}>Editar</button></td>
+                                    <td><button className="eliminar">Eliminar</button></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
+            ) : null}
         </div>
     );
 }
 
 export default Usuario;   
+

@@ -2,8 +2,9 @@ import './Productos.css';
 import { useEffect, useState } from 'react';
 import api from './Services/api';
 import RegistrarProducto from './RegistrarProducto';
+import PropTypes from 'prop-types';
 
-function Productos() {
+function Productos({ puedeEditar = false }) {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
@@ -27,11 +28,13 @@ function Productos() {
 
     return (
         <div className="productos">
-            <RegistrarProducto 
+            {puedeEditar ? (
+                <RegistrarProducto 
                 productoEditado={productoSeleccionado}
                 limpiarSeleccion={setProductoSeleccionado}
                 onActualizacionExitosa={obtenerProductos}
             ></RegistrarProducto>
+            ) : null}
             <h1>Catálogo de Productos</h1>
             {productos && productos.length > 0 ? (
                 <div className="grilla-productos">
@@ -42,8 +45,12 @@ function Productos() {
                             <p className="price">${producto.price}</p>
                             <div className="producto-actions">
                                 <button className="btn-add">Añadir al carrito</button>
-                                    <button className="btn-edit" onClick={() => setProductoSeleccionado(producto)}>Editar</button>
-                                <button className="btn-delete">Eliminar</button>
+                                {puedeEditar ? (
+                                    <>
+                                        <button className="btn-edit" onClick={() => setProductoSeleccionado(producto)}>Editar</button>
+                                        <button className="btn-delete">Eliminar</button>
+                                    </>
+                                ) : null}
                             </div>
                         </div>
                     ))}
@@ -56,3 +63,7 @@ function Productos() {
 }
 
 export default Productos;
+
+Productos.propTypes = {
+    puedeEditar: PropTypes.bool
+};

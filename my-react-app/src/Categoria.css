@@ -1,0 +1,70 @@
+﻿.categorias {
+  padding: 40px 20px;
+  background-color: #0f172a;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f8fafc;
+}
+
+.categorias h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+  color: #f59e0b;
+}
+
+.categorias-error {
+  text-align: center;
+  color: #f87171;
+  font-weight: bold;
+}
+
+.grilla-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  align-items: stretch;
+}
+
+.categoria-card {
+  background-color: #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.categoria-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(245, 158, 11, 0.3);
+}
+
+.categoria-card img {
+  width: 100%;
+  max-width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.categoria-card:hover img {
+  transform: scale(1.05);
+}
+
+.categoria-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #f59e0b;
+}
+
+.categoria-desc {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
