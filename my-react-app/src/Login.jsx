@@ -71,7 +71,13 @@ const Login = ({ cambiarVista }) => {
           </button>
 
           <div className="login-options">
-            <button type="button" className="btn-link">Crear cuenta</button>
+           <button 
+            type="button" 
+             className="btn-link"
+               onClick={() => cambiarVista("Usuarios")}
+        >
+               Crear cuenta
+              </button>
             <button type="button" className="btn-link">Recuperar contraseña</button>
           </div>
 
