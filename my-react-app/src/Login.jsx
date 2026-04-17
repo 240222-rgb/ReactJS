@@ -2,12 +2,13 @@ import './Login.css';
 import { useState } from 'react';
 import api from './Services/api'; 
 import { useAuth } from "./AuthContext"; 
+import PropTypes from 'prop-types';
 
 const Login = ({ cambiarVista }) => {
 
   const { login } = useAuth();
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -17,8 +18,8 @@ const Login = ({ cambiarVista }) => {
     try {
       setError('');
 
-      const response = await api.post('/auth/login', {
-        username,
+      const response = await api.post('/login/', {
+        email,
         password,
       });
 
@@ -48,9 +49,9 @@ const Login = ({ cambiarVista }) => {
             <label>Nombre de usuario</label>
             <input 
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Tu usuario"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Tu email"
             />
           </div>
 
@@ -85,6 +86,10 @@ const Login = ({ cambiarVista }) => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  cambiarVista: PropTypes.func.isRequired,
 };
 
 export default Login;

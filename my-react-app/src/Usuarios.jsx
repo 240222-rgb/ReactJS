@@ -1,15 +1,17 @@
 ﻿import './Usuarios.css';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import api from './Services/api';
-import RegistrarUsuario from './registrarUsuario';
+import RegistrarUsuario from './RegistrarUsuario';
 
-function Usuario({ mostrarLista = true }) {
+function Usuarios(props) {
+    const { mostrarLista = true } = props;
     const [usuarios, setUsuarios] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
             const obtenerUsuarios = async () => {
             try{
-                const response = await api.get('/users');
+                const response = await api.get('/usuarios');
                 setUsuarios(response.data);
             }catch(error){
                 console.error('error al obtener usuarios', error);
@@ -38,26 +40,24 @@ function Usuario({ mostrarLista = true }) {
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>DirecciÃ³n</th>
-                                <th>TelÃ©fono</th>
-                                <th>Correo</th>
-                                <th>Username</th>
+                                <th>Direccion</th>
+                                <th>Telefono</th>
+                                <th>Email</th>
                                 <th>Password</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
+                                <th>Rol</th>
+                                <th>FechaRegistro</th>
                             </tr>
                         </thead>
                         <tbody>
                             {usuarios.map((usuario) => (
-                                <tr key={usuario.id}>
-                                    <td>{usuario.name.firstname}</td>
-                                    <td>{usuario.name.lastname}</td>
-                                    <td>{usuario.address.street} {usuario.address.number} {usuario.address.city} {usuario.address.zipcode}</td>
-                                    <td>{usuario.phone}</td>
-                                    <td>{usuario.email}</td>
-                                    <td>{usuario.username}</td>
-                                    <td>{usuario.password}</td>
+                                <tr key={usuario.id || usuario._id || usuario.email}>
+                                    <td>{usuario.nombre || usuario.username || '—'}</td>
+                                    <td>{usuario.email || '—'}</td>
+                                    <td>{usuario.password || '—'}</td>
+                                    <td>{usuario.direccion || (usuario.address ? `${usuario.address?.street || ''} ${usuario.address?.number || ''} ${usuario.address?.city || ''} ${usuario.address?.zipcode || ''}` : '—')}</td>
+                                    <td>{usuario.telefono || '—'}</td>
+                                    <td>{usuario.rol || '—'}</td>
+                                    <td>{usuario.fechaRegistro || usuario.createdAt || '—'}</td>
                                     <td><button className="editar" onClick={()=>setUsuarioSeleccionado(usuario)}>Editar</button></td>
                                     <td><button className="eliminar">Eliminar</button></td>
                                 </tr>
@@ -70,5 +70,9 @@ function Usuario({ mostrarLista = true }) {
     );
 }
 
-export default Usuario;   
+Usuarios.propTypes = {
+    mostrarLista: PropTypes.bool,
+};
+
+export default Usuarios;
 

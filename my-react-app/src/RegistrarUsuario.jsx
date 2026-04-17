@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from './Services/api';
 import './registrarUsuario.css';
-import { use } from 'react';
 
 function RegistrarUsuario({usuarioEditado, limpiarSeleccion, onActualizacionExitosa}) {
   const[username, setUsername] = useState('');

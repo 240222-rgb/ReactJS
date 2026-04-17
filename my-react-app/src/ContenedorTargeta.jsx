@@ -46,7 +46,7 @@ function ContenedorTargeta({ vista, cambiarVista }) {
   }
 
   if (vista === "Registro") {
-    return <Usuarios mostrarLista={false} />;
+    return <Usuarios mostrarLista={true} />;
   }
 
   if (vista === "Productos") {
