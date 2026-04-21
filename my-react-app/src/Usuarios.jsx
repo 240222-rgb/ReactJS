@@ -1,4 +1,4 @@
-﻿import './Usuarios.css';
+import './Usuarios.css';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import api from './Services/api';
@@ -9,16 +9,18 @@ function Usuarios(props) {
     const [usuarios, setUsuarios] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
-            const obtenerUsuarios = async () => {
-            try{
-                const response = await api.get('/usuarios');
-                setUsuarios(response.data);
-            }catch(error){
-                console.error('error al obtener usuarios', error);
-            }finally{
-                setCargando(false);
-            }
-        };
+
+    const obtenerUsuarios = async () => {
+        try{
+            const response = await api.get('/usuarios');
+            setUsuarios(response.data);
+        }catch(error){
+            console.error('error al obtener usuarios', error);
+        }finally{
+            setCargando(false);
+        }
+    };
+
     useEffect(() => {
         obtenerUsuarios();
     },[]);
@@ -51,13 +53,13 @@ function Usuarios(props) {
                         <tbody>
                             {usuarios.map((usuario) => (
                                 <tr key={usuario.id || usuario._id || usuario.email}>
-                                    <td>{usuario.nombre || usuario.username || '—'}</td>
-                                    <td>{usuario.email || '—'}</td>
-                                    <td>{usuario.password || '—'}</td>
-                                    <td>{usuario.direccion || (usuario.address ? `${usuario.address?.street || ''} ${usuario.address?.number || ''} ${usuario.address?.city || ''} ${usuario.address?.zipcode || ''}` : '—')}</td>
-                                    <td>{usuario.telefono || '—'}</td>
-                                    <td>{usuario.rol || '—'}</td>
-                                    <td>{usuario.fechaRegistro || usuario.createdAt || '—'}</td>
+                                    <td>{usuario.nombre || usuario.username || '-'}</td>
+                                    <td>{usuario.direccion || (usuario.address ? `${usuario.address?.street || ''} ${usuario.address?.number || ''} ${usuario.address?.city || ''} ${usuario.address?.zipcode || ''}` : '-')}</td>
+                                    <td>{usuario.telefono || '-'}</td>
+                                    <td>{usuario.gmail || usuario.email || '-'}</td>
+                                    <td>{usuario.password || '-'}</td>
+                                    <td>{usuario.rol || '-'}</td>
+                                    <td>{usuario.fechaRegistro || usuario.createdAt || '-'}</td>
                                     <td><button className="editar" onClick={()=>setUsuarioSeleccionado(usuario)}>Editar</button></td>
                                     <td><button className="eliminar">Eliminar</button></td>
                                 </tr>
@@ -75,4 +77,3 @@ Usuarios.propTypes = {
 };
 
 export default Usuarios;
-

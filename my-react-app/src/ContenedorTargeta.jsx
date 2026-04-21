@@ -1,20 +1,20 @@
-import PropTypes from "prop-types";
-import AcercaDe from "./AcercaDe";
-import Usuarios from "./Usuarios";
-import Galeria from "./Galeria";
-import Carrito from "./Carrito";
-import Categoria from "./Categoria";
-import Sucursales from "./Sucursales";
-import Contacto from "./Contacto";
-import Productos from "./Productos";
-import Login from "./Login";
-import { useAuth } from "./AuthContext";
-import "./ContenedorTarjeta.css";
+import PropTypes from 'prop-types';
+import AcercaDe from './AcercaDe';
+import Usuarios from './Usuarios';
+import Galeria from './Galeria';
+import Carrito from './Carrito';
+import Categoria from './Categoria';
+import Sucursales from './Sucursales';
+import Contacto from './Contacto';
+import Productos from './Productos';
+import Login from './Login';
+import { useAuth } from './AuthContext';
+import './ContenedorTarjeta.css';
 
-import img1 from "./assets/1.png";
-import img2 from "./assets/2.png";
-import img3 from "./assets/3.png";
-import img4 from "./assets/4.png";
+import img1 from './assets/1.png';
+import img2 from './assets/2.png';
+import img3 from './assets/3.png';
+import img4 from './assets/4.png';
 
 function Tarjeta({ image, titulo, descripcion }) {
   return (
@@ -35,45 +35,46 @@ Tarjeta.propTypes = {
 };
 
 function ContenedorTargeta({ vista, cambiarVista }) {
-  const { isLoggedIn } = useAuth();
+  const { role, userId } = useAuth();
+  const esAdmin = role === 'admin';
 
-  if (vista === "AcercaDe") {
+  if (vista === 'AcercaDe') {
     return <AcercaDe />;
   }
 
-  if (vista === "Usuarios") {
-    return <Usuarios />;
+  if (vista === 'Usuarios') {
+    return esAdmin ? <Usuarios /> : <p>No tienes permisos para ver usuarios.</p>;
   }
 
-  if (vista === "Registro") {
+  if (vista === 'Registro') {
     return <Usuarios mostrarLista={true} />;
   }
 
-  if (vista === "Productos") {
-    return <Productos puedeEditar={isLoggedIn} />;
+  if (vista === 'Productos') {
+    return <Productos puedeEditar={esAdmin} />;
   }
 
-  if (vista === "Galeria") {
+  if (vista === 'Galeria') {
     return <Galeria />;
   }
 
-  if (vista === "Carrito") {
-    return <Carrito />;
+  if (vista === 'Carrito') {
+    return <Carrito role={role} userId={userId} />;
   }
 
-  if (vista === "Categorias") {
-    return <Categoria />;
+  if (vista === 'Categorias') {
+    return esAdmin ? <Categoria puedeEditar={true} /> : <p>No tienes permisos para ver categorias.</p>;
   }
 
-  if (vista === "Sucursales") {
+  if (vista === 'Sucursales') {
     return <Sucursales />;
   }
 
-  if (vista === "Contacto") {
+  if (vista === 'Contacto') {
     return <Contacto />;
   }
 
-  if (vista === "Login") {
+  if (vista === 'Login') {
     return <Login cambiarVista={cambiarVista} />;
   }
 
@@ -81,25 +82,25 @@ function ContenedorTargeta({ vista, cambiarVista }) {
     <div className="ContenedorTargeta">
       <Tarjeta
         image={img1}
-        titulo="La música es el lenguaje universal del alma"
-        descripcion="La música no necesita traducción. No importa el idioma o el país, todos podemos sentirla."
+        titulo="La musica es el lenguaje universal del alma"
+        descripcion="La musica no necesita traduccion. No importa el idioma o el pais, todos podemos sentirla."
       />
 
       <Tarjeta
         image={img2}
-        titulo="Donde las palabras fallan, la música habla."
-        descripcion="Hay emociones que no podemos explicar con palabras, pero una canción puede expresarlas perfectamente."
+        titulo="Donde las palabras fallan, la musica habla."
+        descripcion="Hay emociones que no podemos explicar con palabras, pero una cancion puede expresarlas perfectamente."
       />
 
       <Tarjeta
         image={img3}
-        titulo="La música puede cambiar el mundo."
-        descripcion="Una canción puede inspirar, motivar o sanar. Si cambia a las personas, también puede transformar la sociedad."
+        titulo="La musica puede cambiar el mundo."
+        descripcion="Una cancion puede inspirar, motivar o sanar. Si cambia a las personas, tambien puede transformar la sociedad."
       />
 
       <Tarjeta
         image={img4}
-        titulo="La música convierte momentos ordinarios en recuerdos extraordinarios."
+        titulo="La musica convierte momentos ordinarios en recuerdos extraordinarios."
         descripcion="Muchas veces asociamos canciones con momentos importantes de nuestra vida."
       />
     </div>

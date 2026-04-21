@@ -1,11 +1,10 @@
 import './Login.css';
 import { useState } from 'react';
-import api from './Services/api'; 
-import { useAuth } from "./AuthContext"; 
+import api from './Services/api';
+import { useAuth } from './AuthContext';
 import PropTypes from 'prop-types';
 
 const Login = ({ cambiarVista }) => {
-
   const { login } = useAuth();
 
   const [email, setEmail] = useState('');
@@ -23,31 +22,25 @@ const Login = ({ cambiarVista }) => {
         password,
       });
 
-      const token = response.data.token;
-
-      login(token);
-     cambiarVista("Inicio");
-
-      localStorage.setItem('authToken', token);
+      login(response.data);
+      cambiarVista('Inicio');
 
       alert('Login exitoso!');
-
     } catch (err) {
       console.error('Error en login:', err);
-      setError('Usuario o contraseña incorrecta');
+      setError('Usuario o contrasena incorrecta');
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Iniciar Sesión</h2>
+        <h2>Iniciar Sesion</h2>
 
         <form className="login-form" onSubmit={handleLogin}>
-
           <div className="form-group">
             <label>Nombre de usuario</label>
-            <input 
+            <input
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -56,12 +49,12 @@ const Login = ({ cambiarVista }) => {
           </div>
 
           <div className="form-group">
-            <label>Contraseña</label>
-            <input 
+            <label>Contrasena</label>
+            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Tu contraseña"
+              placeholder="Tu contrasena"
             />
           </div>
 
@@ -72,16 +65,15 @@ const Login = ({ cambiarVista }) => {
           </button>
 
           <div className="login-options">
-           <button 
-            type="button" 
-             className="btn-link"
-               onClick={() => cambiarVista("Registro")}
-        >
-               Crear cuenta
-              </button>
-            <button type="button" className="btn-link">Recuperar contraseña</button>
+            <button
+              type="button"
+              className="btn-link"
+              onClick={() => cambiarVista('Registro')}
+            >
+              Crear cuenta
+            </button>
+            <button type="button" className="btn-link">Recuperar contrasena</button>
           </div>
-
         </form>
       </div>
     </div>

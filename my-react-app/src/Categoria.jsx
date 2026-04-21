@@ -1,64 +1,69 @@
 ﻿import './Categoria.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from './Services/api';
+import RegistrarCategoria from './RegistrarCategoria';
 
-function Categoria() {
+function Categoria({ puedeEditar = false }) {
     const [categorias, setCategorias] = useState([]);
     const [cargando, setCargando] = useState(true);
-    const [error, setError] = useState('');
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+
+    const obtenerCategorias = async () => {
+        try {
+            const response = await api.get('/categorias');
+            setCategorias(response.data);
+        } catch (error) {
+            console.error('Error al obtener categorias:', error);
+        } finally {
+            setCargando(false);
+        }
+    };
+
+    const handleEliminar = async (id) => {
+        if (window.confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
+            try {
+                await api.delete(`/categorias/${id}`);
+                alert('Categoría eliminada exitosamente');
+                obtenerCategorias();
+            } catch (error) {
+                console.error('Error al eliminar categoría:', error);
+                alert('Error al eliminar la categoría');
+            }
+        }
+    };
 
     useEffect(() => {
-        const obtenerCategorias = async () => {
-            try {
-                const url = import.meta.env.VITE_THEMEALDB_API_KEY;
-                if (!url) {
-                    throw new Error('Falta la URL de categorias en el .env');
-                }
-
-                const response = await axios.get(url);
-                const data = response.data && response.data.categories ? response.data.categories : [];
-                setCategorias(data);
-            } catch (err) {
-                console.error('Error al obtener categorias:', err);
-                setError('No se pudieron cargar las categorias.');
-            } finally {
-                setCargando(false);
-            }
-        };
-
         obtenerCategorias();
     }, []);
 
     if (cargando) return <p>Cargando categorias...</p>;
 
-    if (error) {
-        return (
-            <div className="categorias">
-                <p className="categorias-error">{error}</p>
-            </div>
-        );
-    }
-
     return (
         <div className="categorias">
-            <h1>Catalogo de Categorias</h1>
+            {puedeEditar ? (
+                <RegistrarCategoria 
+                    categoriaEditada={categoriaSeleccionada}
+                    limpiarSeleccion={setCategoriaSeleccionada}
+                    onActualizacionExitosa={obtenerCategorias}
+                ></RegistrarCategoria>
+            ) : null}
+            <h1>Catálogo de Categorías</h1>
             {categorias && categorias.length > 0 ? (
                 <div className="grilla-categorias">
                     {categorias.map((categoria) => (
-                        <div key={categoria.idCategory} className="categoria-card">
-                            <img
-                                src={categoria.strCategoryThumb}
-                                alt={categoria.strCategory}
-                            />
-                            <h3>{categoria.strCategory}</h3>
-                            <p className="categoria-desc">
-                                {categoria.strCategoryDescription}
-                            </p>
+                        <div key={categoria.id} className="categoria-card">
+                            <h3>{categoria.nombre}</h3>
+                            {puedeEditar ? (
+                                <div className="categoria-actions">
+                                    <button className="btn-edit" onClick={() => setCategoriaSeleccionada(categoria)}>Editar</button>
+                                    <button className="btn-delete" onClick={() => handleEliminar(categoria.id)}>Eliminar</button>
+                                </div>
+                            ) : null}
                         </div>
                     ))}
                 </div>
             ) : (
-                <p>No hay categorias disponibles</p>
+                <p>No hay categorías disponibles</p>
             )}
         </div>
     );
